@@ -1,0 +1,15 @@
+{
+  "name": "node-api",
+  "main": "server.js",
+  "description": "Learning to build a RESTful Node API",
+  "repository": {
+    "type" :"git",
+    "url": "https://github.com/amdoyle/NodeRESTfulAPI"
+  },
+  "dependencies": {
+    "express": "~4.0.0",
+    "mongoose": "~3.6.13",
+    "body-parser": "~1.0.1"
+  }
+
+}
