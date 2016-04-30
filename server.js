@@ -9,6 +9,8 @@
  // connect db
  mongoose.connect('mongodb://node:node@novus.modulusmongo.net:27017/Iganiq8o');
 
+ var Kitten = require('./app/models/kitten');
+
  // configure app to use bodyParser()
  // this will let us get the data from a POST
  app.use(bodyParser.urlencoded({ extended: true }));
