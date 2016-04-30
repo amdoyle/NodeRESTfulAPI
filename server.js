@@ -25,7 +25,7 @@
 
 
  // middleware to use for all requests
- router.user(function(req, res, next) {
+ router.use(function(req, res, next) {
     // log that something is happening
     console.log("Stuff is happening....");
     //make sure we go to the next route an don't stop there!
