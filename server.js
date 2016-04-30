@@ -4,6 +4,10 @@
  var express = require('express');
  var app = express();
  var bodyParser = require('body-parser');
+ var mongoose = require('mongoose');
+
+ // connect db
+ mongoose.connect('mongodb://node:node@novus.modulusmongo.net:27017/Iganiq8o');
 
  // configure app to use bodyParser()
  // this will let us get the data from a POST
@@ -11,6 +15,8 @@
  app.use(bodyParser.json());
 
  var port = process.env.PORT || 8080;
+
+
 
  // ROUTES FOR OUR API =========================================================
  var router = express.Router(); //get the instance of the express Router
