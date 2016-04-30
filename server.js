@@ -7,7 +7,7 @@
  var mongoose = require('mongoose');
 
  // connect db
- mongoose.connect('mongodb://node:node@novus.modulusmongo.net:27017/Iganiq8o');
+ mongoose.connect('mongodb://localhost/db_testing');
 
  var Kitten = require('./app/models/kitten');
 
@@ -38,6 +38,24 @@
  });
 
  // ADD MORE ROUTES HERE!
+
+ // on routes that end in /kittens -----------------------------------------------
+ router.route('/kittens')
+  // create a new kitten - accessed at POST http://localhost:8080/api/kittens
+  .post(function(req, res) {
+    // create a new instance of the Kitten model
+    var kitten = new Kitten();
+
+    // set the new kitten's name from the request body
+    kitten.name = req.body.name;
+    // save the new instance of Kitten and check for any errors
+    kitten.save(function(err) {
+      if (err)
+        res.send(err);
+
+      res.json({ message: "A new kitten has been born!" });
+    });
+  });
 
  // REGISTER OUR ROUTES --------------------------------------------------------
  app.use('/api', router);
