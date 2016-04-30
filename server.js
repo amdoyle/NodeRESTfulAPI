@@ -54,6 +54,15 @@
         res.send(err);
 
       res.json({ message: "A new kitten has been born!" });
+    })
+  })
+      // get all teh kittens - accessed at GET http://localhost:8080/api/bears
+  .get(function(req, res) {
+    Kitten.find(function(err, kittens) {
+      if (err)
+        res.send(err);
+
+      res.json(kittens);
     });
   });
 
