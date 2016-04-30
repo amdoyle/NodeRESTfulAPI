@@ -66,6 +66,18 @@
     });
   });
 
+  // routes that end in /kittens/:kitten_id
+  router.route('/kittens/:kitten_id')
+
+    .get(function(req, res) {
+      Kitten.findById(req.params.kitten_id, function(err, kitten) {
+        if (err)
+          res.send(err);
+
+        res.json(kitten);
+      });
+    });
+
  // REGISTER OUR ROUTES --------------------------------------------------------
  app.use('/api', router);
 
