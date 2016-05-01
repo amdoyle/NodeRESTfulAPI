@@ -69,13 +69,32 @@
   // routes that end in /kittens/:kitten_id
   router.route('/kittens/:kitten_id')
 
+    // get the unique instance of the kitten with the id passed
     .get(function(req, res) {
       Kitten.findById(req.params.kitten_id, function(err, kitten) {
         if (err)
           res.send(err);
-
+        // if the request is success return the kitten back as JSON
         res.json(kitten);
-      });
+      })
+
+    // take the unique instance of the kitten and update it
+    .put(function(req, res) {
+      Kitten.findById(req.params.kitten_id, function(err, kitten) {
+        if (err)
+          res.send(err);
+        //change the name of the kitten based on what is passed in the body
+        kitten.name = req.body.name;
+
+        kitten.save(function(err) {
+          if (err)
+            res.send(err);
+
+          res.json({ message: 'Kitten was updated! '});
+        });
+      })
+    });
+
     });
 
  // REGISTER OUR ROUTES --------------------------------------------------------
