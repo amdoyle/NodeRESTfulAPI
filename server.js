@@ -77,7 +77,7 @@
         // if the request is success return the kitten back as JSON
         res.json(kitten);
       })
-
+    })
     // take the unique instance of the kitten and update it
     .put(function(req, res) {
       Kitten.findById(req.params.kitten_id, function(err, kitten) {
@@ -95,7 +95,6 @@
       })
     });
 
-    });
 
  // REGISTER OUR ROUTES --------------------------------------------------------
  app.use('/api', router);
