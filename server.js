@@ -93,8 +93,20 @@
           res.json({ message: 'Kitten was updated! '});
         });
       })
-    });
+    })
 
+    // delete the unique instance of the kitten - access at DELETE http://localhost:8080/api/kittens/:kitten_id
+    .delete(function(req, res) {
+      Kitten.remove({
+        _id: req.params.kitten_id
+
+      }, function(err, kitten){
+        if (err)
+          res.send(err);
+
+        res.json({ message: 'Successfully deleted' });
+      });
+    });
 
  // REGISTER OUR ROUTES --------------------------------------------------------
  app.use('/api', router);
